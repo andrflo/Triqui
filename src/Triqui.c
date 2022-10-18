@@ -492,6 +492,10 @@ void obt_mov_computadora(void)
 			  }
 			  else
 			  {
+				  if (matriz[0][0]=='x' && matriz[0][2]=='x')
+				  {
+
+				  }
 				  for(t=0; t<3; ++t)
 				  {
 					  for (j=0; j<3; ++j)
