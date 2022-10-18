@@ -492,36 +492,94 @@ void obt_mov_computadora(void)
 			  }
 			  else
 			  {
-				  if (matriz[0][0]=='x' && matriz[0][2]=='x')
+				  if (matriz[0][0]=='x' && matriz[2][2]=='x')
 				  {
-
-				  }
-				  for(t=0; t<3; ++t)
-				  {
-					  for (j=0; j<3; ++j)
+					  for(t=0; t<3; ++t)
 					  {
-						if (matPos[t][j]>max)
-						{
-							max=matPos[t][j];
-							xmax=t;
-							ymax=j;
-						}
+						  for (j=0; j<3; ++j)
+						  {
+							if (!(t==0 && j==2) && !(t==2 && j==0))
+							{
+								if (matPos[t][j]>max)
+								{
+									max=matPos[t][j];
+									xmax=t;
+									ymax=j;
+								}
+							}
+
+						  }
+					  }
+					  if(max==0 && matriz[0][2]!=ESPACIO && matriz[2][0]!=ESPACIO)
+					  {
+						  printf("Tablas\n");
+						  exit(0);
+					  }
+					  else
+					  {
+						  matriz[xmax][ymax] = '0';
+						  marcacionPC(xmax,ymax);
 					  }
 				  }
-				  if(max==0)
+				  else if (matriz[0][2]=='x' && matriz[2][0]=='x')
 				  {
-					  printf("Tablas\n");
-					  exit(0);
+					  for(t=0; t<3; ++t)
+					  {
+						  for (j=0; j<3; ++j)
+						  {
+							if (!(t==0 && j==0) && !(t==2 && j==2))
+							{
+								if (matPos[t][j]>max)
+								{
+									max=matPos[t][j];
+									xmax=t;
+									ymax=j;
+								}
+							}
+
+						  }
+					  }
+					  if(max==0 && matriz[0][0]!=ESPACIO && matriz[2][2]!=ESPACIO)
+					  {
+						  printf("Tablas\n");
+						  exit(0);
+					  }
+					  else
+					  {
+						  matriz[xmax][ymax] = '0';
+						  marcacionPC(xmax,ymax);
+					  }
+
 				  }
 				  else
 				  {
+					  for(t=0; t<3; ++t)
+					  {
+						  for (j=0; j<3; ++j)
+						  {
+							if (matPos[t][j]>max)
+							{
+								max=matPos[t][j];
+								xmax=t;
+								ymax=j;
+							}
+						  }
+					  }
+					  if(max==0)
+					  {
+						  printf("Tablas\n");
+						  exit(0);
+					  }
+					  else
+					  {
 
-					  matriz[xmax][ymax] = '0';
-					  marcacionPC(xmax,ymax);
+						  matriz[xmax][ymax] = '0';
+						  marcacionPC(xmax,ymax);
+					  }
 				  }
 
-			  }
 
+			  }
 		  }
 
       }
